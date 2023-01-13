@@ -52,7 +52,7 @@ function jouerMorpion(id){
     morpion[x][y]=1;
     counter++;
     if(checkWin(morpion,1)===1){
-      console.log("joueur1 a gagné");
+   
       gererFin();
     }
     var image ="<img src='./rond.png' style='width:100px;height:100px'/>";
@@ -68,7 +68,7 @@ function jouerMorpion(id){
       morpion[x][y]=2;
       counter++;
       if(checkWin(morpion,2)===1){
-        console.log("joueur 2 a gagné");
+    
         gererFin();
       }
       var image ="<img src='./croix.png' style='width:100px;height:100px'/>";
@@ -79,12 +79,11 @@ function jouerMorpion(id){
         }
     
     }
-    if(counter===9){
-      if(checkWin(morpion,1)===-1 || checkWin(morpion,2)===-1){
-       
-        gererFinNull();
-      }
-     }
+    if(counter===9 && checkWin(morpion,1)===-1 && checkWin(morpion,2)===-1){
+      gererFinNull();
+    }
+   
+    
     
 
    }
@@ -119,12 +118,17 @@ function  checkWin(morpion,player){
 
 
 function gererFin(){
+
+  
     var contentAlert ="Partie Terminée, le gagnant est Joueur " + joueurEnCours+"<br/>";
     contentAlert+='<button type="button" class="btn btn-secondary" onClick=reinitialiser()>Recommencez</button>' ;
     alerte.innerHTML=contentAlert;
     alerte.classList.remove("d-none");
     finJeu=true;
+   
+    
 }
+
 function gererFinNull(){
   var contentAlert ="Partie Terminée, Match Null!! "+"<br/>";
   contentAlert+='<button type="button" class="btn btn-secondary" onClick=reinitialiser()>Recommencez</button>' ;
